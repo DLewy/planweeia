@@ -1,5 +1,5 @@
 <!-- Copyright © 2020 Lewy. All rights reserved -->
-<!-- ver. 1.3 06.10.2020 -->
+<!-- ver. 1.3 10.10.2020 -->
 
 <!DOCTYPE html>
 <html>
@@ -24,16 +24,18 @@
             <ul class="menu" id="test">
                 <li><a id="tab1" onclick="menuClick(this.id)">Plan</a></li
                 ><li><a id="tab2" onclick="menuClick(this.id)">Zmiany</a></li
-                ><li><a id="tab3" onclick="menuClick(this.id)">Porównanie</a></li
+                ><li><a class="tab3" id="tab3-beer" onclick="menuClick(this.id)">Porównanie</a></li
                 ><li><a id="tab4" onclick="menuClick(this.id)">Terminy</a></li
                 ><li><a id="tab5" onclick="menuClick(this.id)">Pobierz</a></li>
             </ul>
             <div class="menu-bg-overlay" onclick="outsideMenuClick()"></div>
             <script>
                 document.getElementById("tab1").style.backgroundColor = "#ffffff49";
-                if (/Mobile/.test(navigator.userAgent) || window.matchMedia("(max-width: 39em)").matches) {
-                    document.getElementById("tab3").innerHTML= "Stary Plan";
-                    document.getElementById("tab3").id= "tab3-mobile";
+
+                //if ((/Mobile/.test(navigator.userAgent) || window.matchMedia("(max-width: 39rem)").matches)
+                if (window.matchMedia("(max-width: 39rem)").matches) {
+                    document.querySelector(".tab3").innerHTML = "Stary Plan";
+                    document.querySelector(".tab3").id = "tab3-old";
                 }
             </script>
         </header>

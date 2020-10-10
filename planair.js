@@ -1,4 +1,4 @@
-/* ver. 1.3 06.10.2020 */
+/* ver. 1.3 10.10.2020 */
 
 const timetableName = "plan-7air1.png";
 const timetableDiffName = "diff-plan-7air1.png";
@@ -7,8 +7,8 @@ const termsName = "terminy.png";
 
 function menuClick(id) {
     //Hide mobile menu if expanded
-    //document.getElementById("menu-btn").checked = false;
-    document.getElementById("menu-btn").click();
+    document.getElementById("menu-btn").checked = false;
+    //document.getElementById("menu-btn").click();
     
     if (id != "tab5") {
         //save to session storage
@@ -41,13 +41,13 @@ function menuClick(id) {
             document.getElementById("tabcontent-img-download").href = timetableDiffName;
             document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableDiffName));
            break;
-        case "tab3":
+        case "tab3-beer":
             document.getElementById("Beer").style.display = "block";
             new BeerSlider(document.getElementById("beer-slider"));
             document.getElementById("tabcontent-img-download").href = timetableOldName;
             document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableOldName));
            break;
-        case "tab3-mobile":
+        case "tab3-old":
             document.getElementById("Old").style.display = "block";
             document.getElementById("tabcontent-img-download").href = timetableOldName;
             document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableOldName));
@@ -73,7 +73,25 @@ function cfl(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-//Reload page using Page Visibility API
+//Change tab3 name and content when width is changing
+function tab3Change(e) {
+    var id = sessionStorage.getItem("tabId");
+ 
+    if (e.matches) {
+        document.querySelector(".tab3").innerHTML = "Stary Plan";
+        document.querySelector(".tab3").id = "tab3-old";
+        if (id =="tab3-beer") menuClick("tab3-old");
+    }
+    else {
+        document.querySelector(".tab3").innerHTML = "Porównanie";
+        document.querySelector(".tab3").id = "tab3-beer";
+        if (id == "tab3-old") menuClick("tab3-beer");
+    }
+    
+}
+window.matchMedia("(max-width: 39rem)").addListener(tab3Change);
+
+//Auto reload page using Page Visibility API
 function handleVisibilityChange() {
     if (document.visibilityState == "visible") {
         location.reload(true);
@@ -82,6 +100,7 @@ function handleVisibilityChange() {
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
 window.onload = function() {
+    //restore opened tab from last session (before refresh)
     var id = sessionStorage.getItem("tabId");
     if (id) {
         menuClick(id);
