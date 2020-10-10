@@ -32,11 +32,17 @@
             <script>
                 document.getElementById("tab1").style.backgroundColor = "#ffffff49";
 
+                //Change tab3 name and id
                 //if ((/Mobile/.test(navigator.userAgent) || window.matchMedia("(max-width: 39rem)").matches)
                 if (window.matchMedia("(max-width: 39rem)").matches) {
                     document.querySelector(".tab3").innerHTML = "Stary Plan";
                     document.querySelector(".tab3").id = "tab3-old";
                 }
+
+                /*//Change navbar height on mobile
+                if (/Mobile/.test(navigator.userAgent)) {
+                    document.documentElement.style.setProperty("--navbar-height","45px");
+                }*/
             </script>
         </header>
 
