@@ -1,0 +1,36 @@
+<!-- Copyright © 2020 Lewy. All rights reserved -->
+<!-- ver. 1.2.1 06.10.2020 -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#860b0d">
+        <title>Plan AiR</title>
+        <link rel="icon" href="weeia_logo.png">
+        <link rel="stylesheet" href="planair.css?v=1.2.1">
+        <script src="planair.js?v=1.2.1"></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="logo"><a href="http://www.weeia.p.lodz.pl/"><img src="weeia_logo.png" alt="logo"></a></div>
+            <p class="title">Plan AIR1</p>
+            <input class="menu-btn" type="checkbox" id="menu-btn"/>
+            <label class="menu-icon" for="menu-btn"><div class="nav-icon-container"><div class="nav-icon"></div></div></label>
+            <ul class="menu">
+                <li><a id="tab1" onclick="menuClick(this.id)">Plan</a></li
+                ><li><a id="tab2" onclick="menuClick(this.id)">Zmiany</a></li
+                ><li><a id="tab3" onclick="menuClick(this.id)">Stary Plan</a></li
+                ><li><a id="tab4" onclick="menuClick(this.id)">Pobierz</a></li>
+            </ul>
+            <div class="menu-bg-overlay" onclick="outsideMenuClick()"></div>
+        </header>
+        <div class="content">
+            <img id="timetable-img" src="plan-7air1.png" alt="Plan">
+        </div>
+        <a id="content-img-download" href="plan-7air1.png" download="Plan-7air1.png">Pobierz</a>
+        <!-- <a id="content-img-download" href="plan-7air1.png" download>Pobierz</a> -->
+    </body>
+</html>
