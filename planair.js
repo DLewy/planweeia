@@ -7,10 +7,13 @@ const termsName = "terminy.png";
 
 function menuClick(id) {
     //Hide mobile menu if expanded
-    /*document.getElementById("menu-btn").checked = false;*/
+    //document.getElementById("menu-btn").checked = false;
     document.getElementById("menu-btn").click();
     
     if (id != "tab5") {
+        //save to session storage
+        sessionStorage.setItem("tabId",id);
+
         //Hide tab content
         var tabcontent = document.querySelectorAll(".tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
@@ -25,11 +28,6 @@ function menuClick(id) {
 
         //Set bg color for selected tab
         document.getElementById(id).style.backgroundColor = "#ffffff49";
-
-        //Delete Beer Slider element
-        /*if (slider) {
-            delete BeerSlider;
-        }*/
     }
 
     switch(id) {
@@ -83,13 +81,9 @@ function handleVisibilityChange() {
 }
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
-/*window.onload = function() {
-    document.getElementById("tab1").style.backgroundColor = "#ffffff49";
-    
-    if (/Mobile/.test(navigator.userAgent)) {
-        document.getElementById("tab3").innerHTML= "Stary Plan";
-        document.getElementById("tab3").id= "tab3-mobile";
+window.onload = function() {
+    var id = sessionStorage.getItem("tabId");
+    if (id) {
+        menuClick(id);
     }
-}*/
-
-
+}

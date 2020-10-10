@@ -28,7 +28,7 @@ header .title {
 	float: left;
 	height: inherit;
 	line-height: inherit;
-	font-size: 1.1em;
+	font-size: 1.1rem;
 	font-weight: 700;
   	color: white;
 }
@@ -101,8 +101,8 @@ body .tabcontent img {
 	width: auto;
 	max-height: 100%;	
 	max-width: 100%;
-	padding-top: 4px;
-	padding-bottom: 4px;
+	padding-top: 2px;
+	padding-bottom: 2px;
     margin-left: auto;
 	margin-right: auto;
 	z-index: inherit;
@@ -113,9 +113,6 @@ body .tabcontent #terms-img {
 .tabcontent#Timetable {
 	display: block;
 }
-/*.menu #tab1 {
-	background-color: #ffffff49;
-}*/
 body #tabcontent-img-download {
 	visibility: hidden;
 }
@@ -129,7 +126,7 @@ body #tabcontent-img-download {
 	}
 }
 
-@media (max-width: 39em) {
+@media (max-width: 39rem) {
 	header .menu {
 		height: auto;
 		line-height: inherit; /* set menu items height */
