@@ -1,15 +1,22 @@
-/* ver. 1.2.1 06.10.2020 */
+/* ver. 1.3 06.10.2020 */
 
 const timetableName = "plan-7air1.png";
 const timetableDiffName = "diff-plan-7air1.png";
 const timetableOldName = "plan-7air1_old.png";
+const termsName = "terminy.png";
 
 function menuClick(id) {
     //Hide mobile menu if expanded
     /*document.getElementById("menu-btn").checked = false;*/
     document.getElementById("menu-btn").click();
     
-    if (id != "tab4") {
+    if (id != "tab5") {
+        //Hide tab content
+        var tabcontent = document.querySelectorAll(".tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
         //Delete tab bg
         var tablink = document.querySelectorAll(".menu a");
         for (i = 0; i < tablink.length; i++) {
@@ -18,26 +25,42 @@ function menuClick(id) {
 
         //Set bg color for selected tab
         document.getElementById(id).style.backgroundColor = "#ffffff49";
+
+        //Delete Beer Slider element
+        /*if (slider) {
+            delete BeerSlider;
+        }*/
     }
 
     switch(id) {
         case "tab1":
-            document.getElementById("timetable-img").src = timetableName;
-            document.getElementById("content-img-download").href = timetableName;
-            document.getElementById("content-img-download").setAttribute("download",cfl(timetableName));
+            document.getElementById("Timetable").style.display = "block";
+            document.getElementById("tabcontent-img-download").href = timetableName;
+            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableName));
            break;
         case "tab2":
-            document.getElementById("timetable-img").src = timetableDiffName;
-            document.getElementById("content-img-download").href = timetableDiffName;
-            document.getElementById("content-img-download").setAttribute("download",cfl(timetableDiffName));
+            document.getElementById("Diff").style.display = "block";
+            document.getElementById("tabcontent-img-download").href = timetableDiffName;
+            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableDiffName));
            break;
         case "tab3":
-            document.getElementById("timetable-img").src = timetableOldName;
-            document.getElementById("content-img-download").href = timetableOldName;
-            document.getElementById("content-img-download").setAttribute("download",cfl(timetableOldName));
+            document.getElementById("Beer").style.display = "block";
+            new BeerSlider(document.getElementById("beer-slider"));
+            document.getElementById("tabcontent-img-download").href = timetableOldName;
+            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableOldName));
            break;
+        case "tab3-mobile":
+            document.getElementById("Old").style.display = "block";
+            document.getElementById("tabcontent-img-download").href = timetableOldName;
+            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableOldName));
+            break;
         case "tab4":
-            document.getElementById("content-img-download").click();
+            document.getElementById("Terms").style.display = "block";
+            document.getElementById("tabcontent-img-download").href = termsName;
+            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(termsName));
+            break;       
+        case "tab5":
+            document.getElementById("tabcontent-img-download").click();
             break;
     }
 }
@@ -60,6 +83,13 @@ function handleVisibilityChange() {
 }
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
-window.onload = function() {
+/*window.onload = function() {
     document.getElementById("tab1").style.backgroundColor = "#ffffff49";
-}
+    
+    if (/Mobile/.test(navigator.userAgent)) {
+        document.getElementById("tab3").innerHTML= "Stary Plan";
+        document.getElementById("tab3").id= "tab3-mobile";
+    }
+}*/
+
+
