@@ -3,35 +3,38 @@
 	position: relative;
 	overflow: hidden;
 }
-.beer-slider *, .beer-slider:before, 
-.beer-slider:after, 
-.beer-slider *:before, 
-.beer-slider *:after {
+.beer-slider *,
+.beer-slider:after,
+.beer-slider :after,
+.beer-slider:before,
+.beer-slider :before {
 	box-sizing: border-box; 
 }
-/*
 .beer-slider img {
 	vertical-align: bottom; 
 }
-  .beer-slider > img {
-    max-width: 100%;
-	height: auto; 
+.beer-slider > * {
+	height: 100%;
 }
-*/
+.beer-slider > img {
+    max-width: 100%;
+	height: auto;
+}
 .beer-reveal {
  	position: absolute;
   	left: 0;
   	top: 0;
-  	bottom: 0;
+	bottom: 0;
 	right: 50%;
+	height: auto;
   	overflow: hidden;
-  	z-index: 1;
+	z-index: 1;
   	opacity: 0;
 	transition: opacity 0.35s;
-	border-right: 2px solid grey
+	border-right: 2px solid  rgba(0, 0, 0, 0.5);
 }
 .beer-reveal > :first-child {
-    width: 200%;
+	width: 200%;
 	max-width: none; 
 }
 .beer-reveal > img:first-child {
@@ -51,7 +54,9 @@
   	-moz-appearance: none;
   	opacity: 0;
   	-ms-touch-action: auto;
-  	touch-action: auto; }
+	touch-action: auto;
+	-webkit-tap-highlight-color: transparent; /* non-standard CSS!! */
+}
 .beer-range::-webkit-slider-thumb {
     -webkit-appearance: none;
 	height: 300vh; 
@@ -72,12 +77,12 @@
   	left: 50%;
   	transform: translate3d(-50%, -50%, 0);
   	color: #000;
-  	background: rgba(255, 255, 255, 0.5);
   	width: 48px;
   	height: 48px;
   	border-radius: 50%;
-  	box-shadow: 0 0 6px rgba(0, 0, 0, 0);
-	transition: background 0.3s, box-shadow 0.3s, opacity 0.5s 0.25s; 
+	transition: background 0.3s, box-shadow 0.3s, opacity 0.5s 0.25s;
+	background: rgba(255, 255, 255, 0.85);
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); 
 }
 .beer-handle:before, 
 .beer-handle:after {
@@ -97,10 +102,6 @@
 .beer-handle:after {
     right: 0;
 	transform: rotate(135deg); 
-}
-.beer-range:focus ~ .beer-handle {
-  	background: rgba(255, 255, 255, 0.85);
-  	box-shadow: 0 0 3px rgba(0, 0, 0, 0.4); 
 }
 .beer-slider[data-beer-label]:after, .beer-reveal[data-beer-label]:after {
 	content: attr(data-beer-label);
@@ -125,4 +126,3 @@
 .beer-ready .beer-handle {
 	opacity: 1; 
 }
-

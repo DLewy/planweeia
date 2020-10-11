@@ -1,4 +1,4 @@
-/* ver. 1.3 10.10.2020 */
+/* ver. 1.3.2 11.10.2020 */
 
 const timetableName = "plan-7air1.png";
 const timetableDiffName = "diff-plan-7air1.png";
@@ -102,7 +102,11 @@ document.addEventListener("visibilitychange", handleVisibilityChange, false);
 window.onload = function() {
     //restore opened tab from last session (before refresh)
     var id = sessionStorage.getItem("tabId");
-    if (id) {
+    if (id && id != "tab1") {
         menuClick(id);
+    }
+    else {
+        document.getElementById("tab1").style.backgroundColor = "#ffffff49";
+        document.getElementById("Timetable").style.display = "block";
     }
 }
