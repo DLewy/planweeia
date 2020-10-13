@@ -56,21 +56,23 @@ input {
 	font-size: inherit;
 	padding: 10px 10px 5px 5px;
 	border: none;
+	outline: none;
 	border-bottom: 1px solid lightgrey;
 	transition: border-color 500ms ease-in-out, border-bottom 200ms ease-in-out;
 }
-input:focus,
-input:valid {
+
+input:focus {
   	border-bottom: 2px solid white;
 }
-input:focus {
-  	outline: none;
+input:valid:not(:focus) {
+	border-bottom: 1px solid white;
 }
 input:focus ~ label,
-input:valid ~ label {
-  	top: -0.6rem;
-  	font-size: 0.8rem;
-  	color: lightgrey;
+input:valid ~ label,
+input[type=email]:invalid:not(:placeholder-shown) ~ label {
+	color: lightgrey;
+	top: -0.6rem;
+	font-size: 0.8rem;
 }
 label {
 	position: absolute;
@@ -88,7 +90,7 @@ label {
   	border: none;
 	border-radius: 3px;
 	font-weight: bold;
-  	letter-spacing: 0.06rem;
+  	letter-spacing: 0.03rem;
   	text-decoration: none;
   	outline: none;
   	cursor: pointer;
