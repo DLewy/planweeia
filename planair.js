@@ -1,9 +1,10 @@
-/* ver. 1.3.2 11.10.2020 */
+/* ver. 1.3.3 13.10.2020 */
 
 const timetableName = "plan-7air1.png";
 const timetableDiffName = "diff-plan-7air1.png";
 const timetableOldName = "plan-7air1_old.png";
 const termsName = "terminy.png";
+const autoReloadTimeout = 30;    //minutes
 
 function menuClick(id) {
     //Hide mobile menu if expanded
@@ -93,8 +94,9 @@ window.matchMedia("(max-width: 39rem)").addListener(tab3Change);
 
 //Auto reload page using Page Visibility API
 function handleVisibilityChange() {
+    if (Date.now() - sessionStorage.getItem("timestamp") < autoReloadTimeout*60*1000) return;   //reload only if timeout less than ...
     if (document.visibilityState == "visible") {
-        location.reload(true);
+            location.reload(true);
     }
 }
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
@@ -109,4 +111,6 @@ window.onload = function() {
         document.getElementById("tab1").style.backgroundColor = "#ffffff49";
         document.getElementById("Timetable").style.display = "block";
     }
+    //Save timestamp
+    sessionStorage.setItem("timestamp",Date.now());
 }
