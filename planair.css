@@ -1,4 +1,4 @@
-/* ver. 1.3.2 11.10.2020 */
+/* ver. 1.3.3 07.11.2020 */
 
 *{
 	margin: 0;
@@ -103,6 +103,7 @@ body .tabcontent {
 	overflow-y: auto;
 	/*height: calc(100vh - var(--navbar-height));*/ /*vh not good for mobile coz url bar*/
 	height: auto;
+	animation: fadeIn 0.8s ease;
 }
 body .tabcontent img {
 	display: block;
@@ -120,6 +121,11 @@ body .tabcontent #terms-img {
 }
 body #tabcontent-img-download {
 	visibility: hidden;
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; }
+	  to { opacity: 1; }
 }
 
 @media(hover: hover) and (pointer: fine) {
