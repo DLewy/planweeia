@@ -107,7 +107,7 @@ window.onload = function() {
     if (id && id != "tab1") {
         menuClick(id);
     }
-    else {
+    else {  //default tab
         document.getElementById("tab1").style.backgroundColor = "#ffffff49";
         document.getElementById("Timetable").style.display = "block";
     }
