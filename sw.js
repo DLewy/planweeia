@@ -1,16 +1,16 @@
 const cacheName = 'planair-cache-v1';
 const resourcesToPrecache = [
-  '/test/',
-  '/test/index.php',
-  '/test/planair.js',
-  '/test/planair.css',
-  '/test/BeerSlider.js',
-  '/test/BeerSlider.css',
-  '/test/plan-7air1.png',
-  '/test/plan-7air1_old.png',
-  '/test/diff-plan-7air1.png',
-  '/test/terminy.png',
-  '/test/weeia_logo.png',
+  '/',
+  '/index.php',
+  '/planair.js',
+  '/planair.css',
+  '/BeerSlider.js',
+  '/BeerSlider.css',
+  '/plan-7air1.png',
+  '/plan-7air1_old.png',
+  '/diff-plan-7air1.png',
+  '/terminy.png',
+  '/weeia_logo.png',
 ];
 
 self.addEventListener('install', event => {
@@ -48,14 +48,14 @@ self.addEventListener('fetch', event => {
           return caches.open(cacheName)
             .then(cache => {
               console.log("Adding new fetched file to cache");
-              cache.add(event.request.url.replace(/\?v=.*$/g,'')); //add without ?v=
+              cache.add(event.request.url.replace(/\?(t|v)=.*$/g,'')); //add without ?t=
               return response;
             });
         });
     } catch (err) {
       console.log(err);
       console.log("Load", event.request.url, "from cache");
-      return caches.match(event.request, {ignoreVary: true, ignoreSearch: true}); //match without ?v=
+      return caches.match(event.request, {ignoreVary: true, ignoreSearch: true}); //match without ?t=
     }
   }());
 });

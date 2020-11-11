@@ -13,7 +13,7 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
 
 
 <!-- Copyright © 2020 Lewy. All rights reserved -->
-<!-- ver. 1.3.4 09.11.2020 -->
+<!-- ver. 1.4.0 11.11.2020 -->
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -23,8 +23,9 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         <meta name="theme-color" content="#860b0d">
         <title>Plan AiR</title>
         <link rel="icon" href="weeia_logo.png">
-        <link rel="stylesheet" href="planair.css?v=1.3.4">
+        <link rel="stylesheet" href="planair.css?v=1.4.0">
         <link rel="stylesheet" href="BeerSlider.css?v=1.0.1">
+        <link rel="manifest" href="manifest.webmanifest?v=1.0">
         <script src="planair.js?v=1.3.3"></script>
         <script src="BeerSlider.js?v=1.0"></script>
     </head>
@@ -54,25 +55,25 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         </header>
 
         <div class="tabcontent" id="Timetable">
-            <img id="timetable-img" src="plan-7air1.png?v=<?php echo filemtime("plan-7air1.png"); ?>" alt="Plan">
+            <img id="timetable-img" src="plan-7air1.png?t=<?php echo filemtime("plan-7air1.png"); ?>" alt="Plan">
         </div>
         <div class="tabcontent" id="Diff">
-            <img id="timetable-img" src="diff-plan-7air1.png?v=<?php echo filemtime("diff-plan-7air1.png"); ?>" alt="Plan Diff">
+            <img id="timetable-img" src="diff-plan-7air1.png?t=<?php echo filemtime("diff-plan-7air1.png"); ?>" alt="Plan Diff">
         </div>
         <div class="tabcontent" id="Beer">
             <div id="beer-slider" class="beer-slider" data-beer-label="">
-                <img id="timetable-img" src="plan-7air1_old.png?v=<?php echo filemtime("plan-7air1_old.png"); ?>" alt="Plan Old">
+                <img id="timetable-img" src="plan-7air1_old.png?t=<?php echo filemtime("plan-7air1_old.png"); ?>" alt="Plan Old">
                 <div class="beer-reveal" data-beer-label="">
-                    <img id="timetable-img" src="plan-7air1.png?v=<?php echo filemtime("plan-7air1.png"); ?>" alt="Plan">
+                    <img id="timetable-img" src="plan-7air1.png?t=<?php echo filemtime("plan-7air1.png"); ?>" alt="Plan">
                 </div>
             </div>
         </div>
         <div class="tabcontent" id="Old">
-            <img id="timetable-img" src="plan-7air1_old.png?v=<?php echo filemtime("plan-7air1_old.png"); ?>" alt="Plan Old">
+            <img id="timetable-img" src="plan-7air1_old.png?t=<?php echo filemtime("plan-7air1_old.png"); ?>" alt="Plan Old">
         </div>
 
         <div class="tabcontent" id="Terms">
-            <img id="terms-img" src="terminy.png?v=<?php echo filemtime("terminy.png"); ?>" alt="Terminy">
+            <img id="terms-img" src="terminy.png?t=<?php echo filemtime("terminy.png"); ?>" alt="Terminy">
         </div>
 
         <a id="tabcontent-img-download" href="plan-7air1.png" download="Plan-7air1.png">Pobierz</a>

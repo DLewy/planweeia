@@ -1,4 +1,4 @@
-/* ver. 1.3.3 13.10.2020 */
+/* ver. 1.4.0 10.11.2020 */
 
 const timetableName = "plan-7air1.png";
 const timetableDiffName = "diff-plan-7air1.png";
@@ -113,4 +113,15 @@ window.onload = function() {
     }
     //Save timestamp
     sessionStorage.setItem("timestamp",Date.now());
+}
+
+if('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+            .then(function() {
+                console.log('Service worker registered');
+            }).catch(function() {
+                console.log('Service worker registration failed');
+            });
+    });
 }

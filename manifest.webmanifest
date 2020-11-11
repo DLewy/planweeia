@@ -16,6 +16,6 @@
   ],
   "name": "Plan AiR",
   "short_name": "Plan AiR",
-  "start_url": "/test/index.php",
+  "start_url": "/index.php",
   "theme_color": "#860b0d"
 }
