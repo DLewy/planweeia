@@ -1,16 +1,7 @@
-<?php
-if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
-	$xml = simplexml_load_file("http://www.geoplugin.net/xml.gp?ip=".$_SERVER['REMOTE_ADDR']);
-	$countryname = $xml->geoplugin_countryName;
-	$cityname = $xml->geoplugin_city;
-	$continentCode = $xml->geoplugin_continentCode;
-
-
-	$line = date('Y-m-d H:i:s')." - ".$_SERVER['REMOTE_ADDR']."->".$continentCode."->".$countryname."->".$cityname." - ".$_SERVER['HTTP_REFERER'];
-	file_put_contents('../../logs/weeia.log', $line . PHP_EOL, FILE_APPEND);
-}
-?>
-
+<!--
+    tylko do testów
+    edytować w sw.js resourcesToPrecache z index.php na index.html
+-->
 
 <!-- Copyright © 2020 Lewy. All rights reserved -->
 <!-- ver. 1.4.0 16.11.2020 -->
@@ -58,25 +49,25 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         </header>
 
         <div class="tabcontent" id="Timetable">
-            <img id="timetable-img" src="plan-7air1.png?t=<?php echo filemtime("plan-7air1.png"); ?>" alt="Plan">
+            <img id="timetable-img" src="plan-7air1.png?t=1" alt="Plan">
         </div>
         <div class="tabcontent" id="Diff">
-            <img id="timetable-img" src="diff-plan-7air1.png?t=<?php echo filemtime("diff-plan-7air1.png"); ?>" alt="Plan Diff">
+            <img id="timetable-img" src="diff-plan-7air1.png?t=1" alt="Plan Diff">
         </div>
         <div class="tabcontent" id="Beer">
             <div id="beer-slider" class="beer-slider" data-beer-label="">
-                <img id="timetable-img" src="plan-7air1_old.png?t=<?php echo filemtime("plan-7air1_old.png"); ?>" alt="Plan Old">
+                <img id="timetable-img" src="plan-7air1_old.png?t=1" alt="Plan Old">
                 <div class="beer-reveal" data-beer-label="">
-                    <img id="timetable-img" src="plan-7air1.png?t=<?php echo filemtime("plan-7air1.png"); ?>" alt="Plan">
+                    <img id="timetable-img" src="plan-7air1.png?t=1" alt="Plan">
                 </div>
             </div>
         </div>
         <div class="tabcontent" id="Old">
-            <img id="timetable-img" src="plan-7air1_old.png?t=<?php echo filemtime("plan-7air1_old.png"); ?>" alt="Plan Old">
+            <img id="timetable-img" src="plan-7air1_old.png?t=1" alt="Plan Old">
         </div>
 
         <div class="tabcontent" id="Terms">
-            <img id="terms-img" src="terminy.png?t=<?php echo filemtime("terminy.png"); ?>" alt="Terminy">
+            <img id="terms-img" src="terminy.png?t=1" alt="Terminy">
         </div>
 
         <a id="tabcontent-img-download" href="plan-7air1.png" download="plan-7air1.png">Pobierz</a>

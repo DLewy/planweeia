@@ -2,20 +2,35 @@
   "background_color": "whitesmoke",
   "description": "Plan AiR",
   "display": "standalone",
+  "name": "Plan AiR",
+  "short_name": "Plan AiR",
+  "start_url": "/",
+  "theme_color": "#860b0d",
+  "shortcuts": [
+    {
+      "name": "Newsletter",
+      "short_name": "Newsletter",
+      "url": "/inputform.html"
+    }
+  ],
   "icons": [
     {
       "src": "appicon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "appicon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "appicon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
-  ],
-  "name": "Plan AiR",
-  "short_name": "Plan AiR",
-  "start_url": "/index.php",
-  "theme_color": "#860b0d"
+  ]
 }

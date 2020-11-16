@@ -2,10 +2,10 @@ const cacheName = 'planair-cache-v1';
 const resourcesToPrecache = [
   '/',
   '/index.php',
-  '/planair.js',
-  '/planair.css',
-  '/BeerSlider.js',
-  '/BeerSlider.css',
+  '/planair.js?v=1.4.0',
+  '/planair.css?v=1.4.0',
+  '/BeerSlider.js?v=1.0.0',
+  '/BeerSlider.css?v=1.0.1',
   '/plan-7air1.png',
   '/plan-7air1_old.png',
   '/diff-plan-7air1.png',
@@ -21,41 +21,62 @@ self.addEventListener('install', event => {
         console.log("Resources added to cache", cacheName);
         return cache.addAll(resourcesToPrecache);
       })
-  );
-});
-
-self.addEventListener('activate', event => {
-  console.log("Activating service worker and deleting old caches if exist");
-  //delete any other/old caches
-  event.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.map(key => {
-        if (!cacheName.includes(key))
-          return caches.delete(key);
+      .then(() => {
+        return self.skipWaiting();
       })
-    ))
   );
 });
 
-//'Network falling back to cache' strategy with adding fetched files to the cache
+self.addEventListener('activate', (event) => {
+  console.log("Activating service worker and deleting old caches if exist");
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(keys.map((key) => {
+        if (key !== cacheName) {
+          return caches.delete(key);
+        }
+      }));
+    })
+    .then(() => {
+      return self.clients.claim();
+    })
+  );
+});
+
+/**
+ * Modified 'cache falling back to network' strategy with 
+ * deleting old and adding new fetched files to the cache.
+ * Strategy: try cache -> try net and add to cache -> try cache with ignoreSearch.
+ * If is a net, index.php is always loaded from the net.
+ */
+
 self.addEventListener('fetch', event => {
   console.log("Fetch", event.request.url);
   event.respondWith(async function() {
-    try {
-      console.log("Load", event.request.url, "from net");
-      return await fetch(event.request)
-        .then(response => {
-          return caches.open(cacheName)
-            .then(cache => {
-              console.log("Adding new fetched file to cache");
-              cache.add(event.request.url.replace(/\?(t|v)=.*$/g,'')); //add without ?t=
-              return response;
-            });
-        });
-    } catch (err) {
-      console.log(err);
-      console.log("Load", event.request.url, "from cache");
-      return caches.match(event.request, {ignoreVary: true, ignoreSearch: true}); //match without ?t=
+    const cache = await caches.open(cacheName);
+    var response = await cache.match(event.request, {ignoreVary: true}); //from cache without ignoreSearch
+    if (response && !/\/(index\..*)?$/.test(event.request.url)) {
+      console.log("Load from cache:", event.request.url);
+      return response;
+    } else {
+      try {  //from net
+        response = await fetch(event.request);
+        var responseToCache = response.clone();
+        if (response && response.ok && (response.status == 200 || response.status == 304)) {
+          console.log("Load from net:", event.request.url);
+          console.log("Delete old and add new fetched file to cache");
+          cache.delete(event.request, {ignoreVary: true, ignoreSearch: true});
+          cache.put(event.request, response.clone());
+        } else {
+          throw Error("Response from net not ok");
+        }
+      } catch (err) {  //from cache with ignoreSearch
+        console.log(err);
+        console.log("Load from cache with ignored search:", event.request.url);
+        response = await cache.match(event.request, {ignoreVary: true, ignoreSearch: true});
+      }
+      if (response) return response;
+      else throw Error("No response at all");
     }
   }());
 });

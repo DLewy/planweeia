@@ -1,4 +1,4 @@
-/* ver. 1.4.0 10.11.2020 */
+/* ver. 1.4.0 16.11.2020 */
 
 const timetableName = "plan-7air1.png";
 const timetableDiffName = "diff-plan-7air1.png";
@@ -35,28 +35,28 @@ function menuClick(id) {
         case "tab1":
             document.getElementById("Timetable").style.display = "block";
             document.getElementById("tabcontent-img-download").href = timetableName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableName));
+            document.getElementById("tabcontent-img-download").setAttribute("download", timetableName);
            break;
         case "tab2":
             document.getElementById("Diff").style.display = "block";
             document.getElementById("tabcontent-img-download").href = timetableDiffName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableDiffName));
+            document.getElementById("tabcontent-img-download").setAttribute("download", timetableDiffName);
            break;
         case "tab3-beer":
             document.getElementById("Beer").style.display = "block";
             new BeerSlider(document.getElementById("beer-slider"));
             document.getElementById("tabcontent-img-download").href = timetableOldName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableOldName));
+            document.getElementById("tabcontent-img-download").setAttribute("download", timetableOldName);
            break;
         case "tab3-old":
             document.getElementById("Old").style.display = "block";
             document.getElementById("tabcontent-img-download").href = timetableOldName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableOldName));
+            document.getElementById("tabcontent-img-download").setAttribute("download", timetableOldName);
             break;
         case "tab4":
             document.getElementById("Terms").style.display = "block";
             document.getElementById("tabcontent-img-download").href = termsName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(termsName));
+            document.getElementById("tabcontent-img-download").setAttribute("download", termsName);
             break;       
         case "tab5":
             document.getElementById("tabcontent-img-download").click();
@@ -67,11 +67,6 @@ function menuClick(id) {
 //Hide mobile menu, when clicked outside of it
 function outsideMenuClick() {
     document.getElementById("menu-btn").click();
-}
-
-//Change timetable filename to upper case
-function cfl(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 //Change tab3 name and content when width is changing
@@ -112,16 +107,26 @@ window.onload = function() {
         document.getElementById("Timetable").style.display = "block";
     }
     //Save timestamp
-    sessionStorage.setItem("timestamp",Date.now());
+    sessionStorage.setItem("timestamp", Date.now());
 }
 
+//Service worker
 if('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/sw.js')
-            .then(function() {
+            .then(function(reg) {
                 console.log('Service worker registered');
-            }).catch(function() {
-                console.log('Service worker registration failed');
+                if(reg.installing) {
+                    console.log('Service worker installing');
+                } else if(reg.waiting) {
+                    console.log('Service worker installed');
+                } else if(reg.active) {
+                    console.log('Service worker active');
+                }
+            }).catch(function(err) {
+                console.log('Service worker registration failed with:', err);
             });
     });
+} else {
+    console.log('Service worker unsupported');
 }
