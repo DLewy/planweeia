@@ -1,4 +1,4 @@
-/* ver. 1.4.0 16.11.2020 */
+/* ver. 1.4.0 20.11.2020 */
 
 const timetableName = "plan-7air1.png";
 const timetableDiffName = "diff-plan-7air1.png";
@@ -11,22 +11,19 @@ function menuClick(id) {
     document.getElementById("menu-btn").checked = false;
     //document.getElementById("menu-btn").click();
     
-    if (id != "tab5") {
+    if (id != "tab5" && id != "tab6") {
         //save to session storage
         sessionStorage.setItem("tabId",id);
-
         //Hide tab content
         var tabcontent = document.querySelectorAll(".tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
-
         //Delete tab bg
         var tablink = document.querySelectorAll(".menu a");
         for (i = 0; i < tablink.length; i++) {
             tablink[i].style.removeProperty('background-color');
         }
-
         //Set bg color for selected tab
         document.getElementById(id).style.backgroundColor = "#ffffff49";
     }
@@ -57,8 +54,10 @@ function menuClick(id) {
             document.getElementById("Terms").style.display = "block";
             document.getElementById("tabcontent-img-download").href = termsName;
             document.getElementById("tabcontent-img-download").setAttribute("download", termsName);
-            break;       
+            break;
         case "tab5":
+            window.open("/inputform.html", "_top");   
+        case "tab6":
             document.getElementById("tabcontent-img-download").click();
             break;
     }
@@ -70,6 +69,7 @@ function outsideMenuClick() {
 }
 
 //Change tab3 name and content when width is changing
+window.matchMedia("(max-width: 46rem)").addEventListener("change", tab3Change);
 function tab3Change(e) {
     var id = sessionStorage.getItem("tabId");
  
@@ -83,20 +83,16 @@ function tab3Change(e) {
         document.querySelector(".tab3").id = "tab3-beer";
         if (id == "tab3-old") menuClick("tab3-beer");
     }
-    
 }
-window.matchMedia("(max-width: 39rem)").addListener(tab3Change);
 
 //Auto reload page using Page Visibility API
+document.addEventListener("visibilitychange", handleVisibilityChange, false);
 function handleVisibilityChange() {
     if (Date.now() - sessionStorage.getItem("timestamp") < autoReloadTimeout*60*1000) return;   //reload only if timeout less than ...
-    if (document.visibilityState == "visible") {
-            location.reload(true);
-    }
+    if (document.visibilityState == "visible") location.reload();
 }
-document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
-window.onload = function() {
+window.addEventListener('load', () => {
     //restore opened tab from last session (before refresh)
     var id = sessionStorage.getItem("tabId");
     if (id && id != "tab1") {
@@ -108,7 +104,7 @@ window.onload = function() {
     }
     //Save timestamp
     sessionStorage.setItem("timestamp", Date.now());
-}
+});
 
 //Service worker
 if('serviceWorker' in navigator) {

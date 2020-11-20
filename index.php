@@ -13,7 +13,7 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
 
 
 <!-- Copyright © 2020 Lewy. All rights reserved -->
-<!-- ver. 1.4.0 16.11.2020 -->
+<!-- ver. 1.4.0 20.11.2020 -->
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -29,28 +29,29 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         <link rel="stylesheet" href="BeerSlider.css?v=1.0.1">
         <link rel="manifest" href="manifest.webmanifest?v=1.0.0">
         <link rel="apple-touch-icon" href="appicon-maskable-192.png">
-        <script src="planair.js?v=1.4.0"></script>
-        <script src="BeerSlider.js?v=1.0.0"></script>
+        <script src="planair.js?v=1.4.0" defer></script>
+        <script src="BeerSlider.js?v=1.0.0" defer></script>
     </head>
 
     <body>
         <header>
-            <div class="logo"><a href="http://www.weeia.p.lodz.pl/"><img src="weeia_logo.png" alt="logo"></a></div>
+            <div id="logo"><a href="http://www.weeia.p.lodz.pl/"><img src="weeia_logo.png" alt="logo"></a></div>
             <p class="title">Plan AIR1</p>
-            <input class="menu-btn" type="checkbox" id="menu-btn"/>
+            <input class="menu-btn" id="menu-btn" type="checkbox"/>
             <label class="menu-icon" for="menu-btn"><div class="nav-icon-container"><div class="nav-icon"></div></div></label>
-            <ul class="menu" id="test">
+            <ul class="menu">
                 <li><a id="tab1" onclick="menuClick(this.id)">Plan</a></li
                 ><li><a id="tab2" onclick="menuClick(this.id)">Zmiany</a></li
                 ><li><a class="tab3" id="tab3-beer" onclick="menuClick(this.id)">Porównanie</a></li
                 ><li><a id="tab4" onclick="menuClick(this.id)">Terminy</a></li
-                ><li><a id="tab5" onclick="menuClick(this.id)">Pobierz</a></li>
+                ><li><a id="tab5" onclick="menuClick(this.id)">Newsletter</a></li
+                ><li><a id="tab6" onclick="menuClick(this.id)">Pobierz</a></li>
             </ul>
-            <div class="menu-bg-overlay" onclick="outsideMenuClick()"></div>
+            <div id="menu-bg-overlay" onclick="outsideMenuClick()"></div>
             <script>
                 //Change tab3 name and id
                 //if ((/Mobile/.test(navigator.userAgent) || window.matchMedia("(max-width: 39rem)").matches)
-                if (window.matchMedia("(max-width: 39rem)").matches) {
+                if (window.matchMedia("(max-width: 46rem)").matches) {
                     document.querySelector(".tab3").innerHTML = "Stary Plan";
                     document.querySelector(".tab3").id = "tab3-old";
                 }
