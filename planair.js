@@ -1,4 +1,4 @@
-/* ver. 1.3.3 13.10.2020 */
+/* ver. 1.4.0 20.11.2020 */
 
 const timetableName = "plan-7air1.png";
 const timetableDiffName = "diff-plan-7air1.png";
@@ -11,22 +11,19 @@ function menuClick(id) {
     document.getElementById("menu-btn").checked = false;
     //document.getElementById("menu-btn").click();
     
-    if (id != "tab5") {
+    if (id != "tab5" && id != "tab6") {
         //save to session storage
         sessionStorage.setItem("tabId",id);
-
         //Hide tab content
         var tabcontent = document.querySelectorAll(".tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
-
         //Delete tab bg
         var tablink = document.querySelectorAll(".menu a");
         for (i = 0; i < tablink.length; i++) {
             tablink[i].style.removeProperty('background-color');
         }
-
         //Set bg color for selected tab
         document.getElementById(id).style.backgroundColor = "#ffffff49";
     }
@@ -35,30 +32,32 @@ function menuClick(id) {
         case "tab1":
             document.getElementById("Timetable").style.display = "block";
             document.getElementById("tabcontent-img-download").href = timetableName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableName));
+            document.getElementById("tabcontent-img-download").setAttribute("download", timetableName);
            break;
         case "tab2":
             document.getElementById("Diff").style.display = "block";
             document.getElementById("tabcontent-img-download").href = timetableDiffName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableDiffName));
+            document.getElementById("tabcontent-img-download").setAttribute("download", timetableDiffName);
            break;
         case "tab3-beer":
             document.getElementById("Beer").style.display = "block";
             new BeerSlider(document.getElementById("beer-slider"));
             document.getElementById("tabcontent-img-download").href = timetableOldName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableOldName));
+            document.getElementById("tabcontent-img-download").setAttribute("download", timetableOldName);
            break;
         case "tab3-old":
             document.getElementById("Old").style.display = "block";
             document.getElementById("tabcontent-img-download").href = timetableOldName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(timetableOldName));
+            document.getElementById("tabcontent-img-download").setAttribute("download", timetableOldName);
             break;
         case "tab4":
             document.getElementById("Terms").style.display = "block";
             document.getElementById("tabcontent-img-download").href = termsName;
-            document.getElementById("tabcontent-img-download").setAttribute("download",cfl(termsName));
-            break;       
+            document.getElementById("tabcontent-img-download").setAttribute("download", termsName);
+            break;
         case "tab5":
+            window.open("/inputform.html", "_top");   
+        case "tab6":
             document.getElementById("tabcontent-img-download").click();
             break;
     }
@@ -69,12 +68,8 @@ function outsideMenuClick() {
     document.getElementById("menu-btn").click();
 }
 
-//Change timetable filename to upper case
-function cfl(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 //Change tab3 name and content when width is changing
+window.matchMedia("(max-width: 46rem)").addEventListener("change", tab3Change);
 function tab3Change(e) {
     var id = sessionStorage.getItem("tabId");
  
@@ -88,20 +83,16 @@ function tab3Change(e) {
         document.querySelector(".tab3").id = "tab3-beer";
         if (id == "tab3-old") menuClick("tab3-beer");
     }
-    
 }
-window.matchMedia("(max-width: 39rem)").addListener(tab3Change);
 
 //Auto reload page using Page Visibility API
+document.addEventListener("visibilitychange", handleVisibilityChange, false);
 function handleVisibilityChange() {
     if (Date.now() - sessionStorage.getItem("timestamp") < autoReloadTimeout*60*1000) return;   //reload only if timeout less than ...
-    if (document.visibilityState == "visible") {
-            location.reload(true);
-    }
+    if (document.visibilityState == "visible") location.reload();
 }
-document.addEventListener("visibilitychange", handleVisibilityChange, false);
 
-window.onload = function() {
+window.addEventListener('load', () => {
     //restore opened tab from last session (before refresh)
     var id = sessionStorage.getItem("tabId");
     if (id && id != "tab1") {
@@ -112,5 +103,26 @@ window.onload = function() {
         document.getElementById("Timetable").style.display = "block";
     }
     //Save timestamp
-    sessionStorage.setItem("timestamp",Date.now());
+    sessionStorage.setItem("timestamp", Date.now());
+});
+
+//Service worker
+if('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+            .then(function(reg) {
+                console.log('Service worker registered');
+                if(reg.installing) {
+                    console.log('Service worker installing');
+                } else if(reg.waiting) {
+                    console.log('Service worker installed');
+                } else if(reg.active) {
+                    console.log('Service worker active');
+                }
+            }).catch(function(err) {
+                console.log('Service worker registration failed with:', err);
+            });
+    });
+} else {
+    console.log('Service worker unsupported');
 }
