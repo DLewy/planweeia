@@ -1,10 +1,10 @@
-/* ver. 1.4.0 20.11.2020 */
+/* ver. 1.4.2 15.03.2021 */
 
-const timetableName = "plan-7air1.png";
-const timetableDiffName = "diff-plan-7air1.png";
-const timetableOldName = "plan-7air1_old.png";
+const timetableName = "plan-1et-aim.png";
+const timetableDiffName = "diff-plan-1et-aim.png";
+const timetableOldName = "plan-1et-aim_old.png";
 const termsName = "terminy.png";
-const autoReloadTimeout = 30;    //minutes
+const autoReloadTimeout = 60;    //minutes
 
 function menuClick(id) {
     //Hide mobile menu if expanded
@@ -56,7 +56,8 @@ function menuClick(id) {
             document.getElementById("tabcontent-img-download").setAttribute("download", termsName);
             break;
         case "tab5":
-            window.open("/inputform.html", "_top");   
+            window.open("/inputform.php", "_top");
+            break;
         case "tab6":
             document.getElementById("tabcontent-img-download").click();
             break;
@@ -69,7 +70,7 @@ function outsideMenuClick() {
 }
 
 //Change tab3 name and content when width is changing
-window.matchMedia("(max-width: 46rem)").addEventListener("change", tab3Change);
+window.matchMedia("(max-width: 900px)").addEventListener("change", tab3Change);
 function tab3Change(e) {
     var id = sessionStorage.getItem("tabId");
  
@@ -105,6 +106,15 @@ window.addEventListener('load', () => {
     //Save timestamp
     sessionStorage.setItem("timestamp", Date.now());
 });
+
+//Set css --vh variable (bugfix for vh in mobile browser. Set vh as window height without url bar)
+window.addEventListener('resize', viewHeight);
+window.addEventListener('orientationchange', viewHeight);
+viewHeight();
+
+function viewHeight() {
+    document.documentElement.style.setProperty('--vh', (window.innerHeight/100) + 'px');
+}
 
 //Service worker
 if('serviceWorker' in navigator) {

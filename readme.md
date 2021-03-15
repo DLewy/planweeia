@@ -1,1 +1,1 @@
-[Plan AiR1 WEEIA](https://weeia.vdee.eu/)
+[Plan WEEIA](https://weeia.vdee.eu/)

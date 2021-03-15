@@ -1,16 +1,16 @@
 {
   "background_color": "whitesmoke",
-  "description": "Plan AiR",
+  "description": "Plan WEEIA",
   "display": "standalone",
-  "name": "Plan AiR",
-  "short_name": "Plan AiR",
+  "name": "Plan WEEIA",
+  "short_name": "Plan WEEIA",
   "start_url": "/",
   "theme_color": "#860b0d",
   "shortcuts": [
     {
       "name": "Newsletter",
       "short_name": "Newsletter",
-      "url": "/inputform.html"
+      "url": "/inputform.php"
     }
   ],
   "icons": [

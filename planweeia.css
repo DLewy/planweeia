@@ -1,4 +1,4 @@
-/* ver. 1.4.0 20.11.2020 */
+/* ver. 1.4.2 08.03.2021 */
 
 *{
 	margin: 0;
@@ -9,6 +9,7 @@
 	--navbar-bg-color: #860b0d;
 	--menu-bg-color: #9e3b3d;
 	--navbar-height: 50px;
+	--navbar-height-mobile: 43px;
 }
 html {
 	overflow: hidden; /*this + body overflow: hidden - prevent url hide on mobile when scroll*/
@@ -17,6 +18,7 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 	background-color: whitesmoke;
 	overflow: hidden;
+	height: 100%;
 }
 header {
 	position: fixed;
@@ -120,6 +122,8 @@ body .tabcontent img {
 	z-index: inherit;
 }
 body .tabcontent #terms-img {
+	height: auto;
+	max-width: 100%;
 	max-height: 150%;
 }
 body #tabcontent-img-download {
@@ -140,16 +144,7 @@ body #tabcontent-img-download {
 	}
 }
 
-@media (max-height: 450px) {
-	:root {
-		--navbar-height: 43px;
-	}
-	body .tabcontent img {
-		max-height: 125%;
-	}
-}
-
-@media (max-width: 46rem) {
+@media (max-width: 900px) {
 	header .menu {
 		height: auto;
 		line-height: inherit; /* set menu items height */
@@ -209,7 +204,9 @@ body #tabcontent-img-download {
 
 	/*toggle button*/
 	header .menu-btn:checked ~ .menu {
-		max-height: calc(100vh - var(--navbar-height));
+		/*max-height: calc(100vh - var(--navbar-height));*/
+		/* Bugfix for mobile browser. Set menu max-heght to window innerHeight (--vh without url bar) */
+		max-height: calc(var(--vh, 1vh) * 100 - var(--navbar-height));
 	}
 	header .menu-btn:checked ~ #menu-bg-overlay {
 		visibility: visible;
@@ -234,7 +231,25 @@ body #tabcontent-img-download {
 		max-width: 250%;
 	}
 	body .tabcontent #terms-img {
+		width: auto;
 		max-height: 100%;
+		max-width: 250%;
+	}
+}
+
+@media (max-height: 600px) {
+	:root {
+		--navbar-height: var(--navbar-height-mobile);
+	}
+	body .tabcontent img {
+		height: auto;
+		max-width: 100%;
+		max-height: 250%;
+	}
+	body .tabcontent #terms-img {
+		height: auto;
+		max-width: 100%;
+		max-height: 250%;
 	}
 }
 

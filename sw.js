@@ -1,14 +1,16 @@
-const cacheName = 'planair-cache-v1';
+/* ver. 1.0.0 08.03.2021 */
+
+const cacheName = 'planweeia-cache-v1';
 const resourcesToPrecache = [
   '/',
   '/index.php',
-  '/planair.js?v=1.4.0',
-  '/planair.css?v=1.4.0',
+  '/planweeia.js?v=1.4.2',
+  '/planweeia.css?v=1.4.2',
   '/BeerSlider.js?v=1.0.0',
   '/BeerSlider.css?v=1.0.1',
-  '/plan-7air1.png',
-  '/plan-7air1_old.png',
-  '/diff-plan-7air1.png',
+  '/plan-1et-aim.png',
+  '/plan-1et-aim_old.png',
+  '/diff-plan-1et-aim.png',
   '/terminy.png',
   '/weeia_logo.png',
 ];

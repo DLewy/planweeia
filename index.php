@@ -11,9 +11,8 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
 }
 ?>
 
-
-<!-- Copyright © 2020 Lewy. All rights reserved -->
-<!-- ver. 1.4.0 20.11.2020 -->
+<!-- Copyright © 2021 Lewy. All rights reserved -->
+<!-- ver. 1.4.2 15.03.2021 -->
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -21,22 +20,22 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#860b0d">
-        <meta name="description" content="Plan AiR WEEIA">
+        <meta name="description" content="Plan WEEIA">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <title>Plan AiR</title>
+        <title>Plan WEEIA</title>
         <link rel="icon" href="weeia_logo.png">
-        <link rel="stylesheet" href="planair.css?v=1.4.0">
+        <link rel="stylesheet" href="planweeia.css?v=1.4.2">
         <link rel="stylesheet" href="BeerSlider.css?v=1.0.1">
-        <link rel="manifest" href="manifest.webmanifest?v=1.0.0">
+        <link rel="manifest" href="manifest.webmanifest?v=1.0.1">
         <link rel="apple-touch-icon" href="appicon-maskable-192.png">
-        <script src="planair.js?v=1.4.0" defer></script>
+        <script src="planweeia.js?v=1.4.2" defer></script>
         <script src="BeerSlider.js?v=1.0.0" defer></script>
     </head>
 
     <body>
         <header>
             <div id="logo"><a href="http://www.weeia.p.lodz.pl/"><img src="weeia_logo.png" alt="logo"></a></div>
-            <p class="title">Plan AIR1</p>
+            <p class="title">Plan ET AiM</p>
             <input class="menu-btn" id="menu-btn" type="checkbox"/>
             <label class="menu-icon" for="menu-btn"><div class="nav-icon-container"><div class="nav-icon"></div></div></label>
             <ul class="menu">
@@ -50,8 +49,7 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
             <div id="menu-bg-overlay" onclick="outsideMenuClick()"></div>
             <script>
                 //Change tab3 name and id
-                //if ((/Mobile/.test(navigator.userAgent) || window.matchMedia("(max-width: 39rem)").matches)
-                if (window.matchMedia("(max-width: 46rem)").matches) {
+                if (window.matchMedia("(max-width: 900px)").matches) {
                     document.querySelector(".tab3").innerHTML = "Stary Plan";
                     document.querySelector(".tab3").id = "tab3-old";
                 }
@@ -59,28 +57,26 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         </header>
 
         <div class="tabcontent" id="Timetable">
-            <img id="timetable-img" src="plan-7air1.png?t=<?php echo filemtime("plan-7air1.png"); ?>" alt="Plan">
+            <img id="timetable-img" src="plan-1et-aim.png?t=<?php echo filemtime("plan-1et-aim.png"); ?>" alt="Plan">
         </div>
         <div class="tabcontent" id="Diff">
-            <img id="timetable-img" src="diff-plan-7air1.png?t=<?php echo filemtime("diff-plan-7air1.png"); ?>" alt="Plan Diff">
+            <img id="timetable-img" src="diff-plan-1et-aim.png?t=<?php echo filemtime("diff-plan-1et-aim.png"); ?>" alt="Plan Diff">
         </div>
         <div class="tabcontent" id="Beer">
             <div id="beer-slider" class="beer-slider" data-beer-label="">
-                <img id="timetable-img" src="plan-7air1_old.png?t=<?php echo filemtime("plan-7air1_old.png"); ?>" alt="Plan Old">
+                <img id="timetable-img" src="plan-1et-aim_old.png?t=<?php echo filemtime("plan-1et-aim_old.png"); ?>" alt="Plan Old">
                 <div class="beer-reveal" data-beer-label="">
-                    <img id="timetable-img" src="plan-7air1.png?t=<?php echo filemtime("plan-7air1.png"); ?>" alt="Plan">
+                    <img id="timetable-img" src="plan-1et-aim.png?t=<?php echo filemtime("plan-1et-aim.png"); ?>" alt="Plan">
                 </div>
             </div>
         </div>
         <div class="tabcontent" id="Old">
-            <img id="timetable-img" src="plan-7air1_old.png?t=<?php echo filemtime("plan-7air1_old.png"); ?>" alt="Plan Old">
+            <img id="timetable-img" src="plan-1et-aim_old.png?t=<?php echo filemtime("plan-1et-aim_old.png"); ?>" alt="Plan Old">
         </div>
-
         <div class="tabcontent" id="Terms">
             <img id="terms-img" src="terminy.png?t=<?php echo filemtime("terminy.png"); ?>" alt="Terminy">
         </div>
-
-        <a id="tabcontent-img-download" href="plan-7air1.png" download="plan-7air1.png">Pobierz</a>
-        <!-- <a id="tabcontent-img-download" href="plan-7air1.png" download>Pobierz</a> -->
+        <a id="tabcontent-img-download" href="plan-1et-aim.png" download="plan-1et-aim.png">Pobierz</a>
+        <!-- <a id="tabcontent-img-download" href="plan-1et-aim.png" download>Pobierz</a> -->
     </body>
 </html>

@@ -1,5 +1,3 @@
-<!-- tylko do testów -->
-
 <!-- Copyright © 2021 Lewy. All rights reserved -->
 <!-- ver. 1.0.0 -->
 
@@ -15,7 +13,7 @@
     <link rel="stylesheet" href="inputform.css">
   </head>
   <body>
-    <div class="overlay">
+  <div class="overlay">
       <style>
         .overlay {
           color: red;
