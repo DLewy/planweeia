@@ -1,4 +1,7 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
+
 if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
 	$xml = simplexml_load_file("http://www.geoplugin.net/xml.gp?ip=".$_SERVER['REMOTE_ADDR']);
 	$countryname = $xml->geoplugin_countryName;
@@ -12,7 +15,7 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
 ?>
 
 <!-- Copyright © 2021 Lewy. All rights reserved -->
-<!-- ver. 1.4.2 15.03.2021 -->
+<!-- ver. 1.4.3 16.03.2021 -->
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -24,7 +27,7 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         <meta name="apple-mobile-web-app-capable" content="yes">
         <title>Plan WEEIA</title>
         <link rel="icon" href="weeia_logo.png">
-        <link rel="stylesheet" href="planweeia.css?v=1.4.2">
+        <link rel="stylesheet" href="planweeia.css?v=1.4.3">
         <link rel="stylesheet" href="BeerSlider.css?v=1.0.1">
         <link rel="manifest" href="manifest.webmanifest?v=1.0.1">
         <link rel="apple-touch-icon" href="appicon-maskable-192.png">

@@ -1,4 +1,4 @@
-/* ver. 1.4.2 08.03.2021 */
+/* ver. 1.4.3 16.03.2021 */
 
 *{
 	margin: 0;
@@ -223,7 +223,9 @@ body #tabcontent-img-download {
 		transform: rotate(45deg);
 		top: 0;
 	}
+}
 
+@media (max-width: 900px) and (orientation: portrait) {
 	body .tabcontent img {
 		width: auto;
 		max-height: 100%;
@@ -237,7 +239,7 @@ body #tabcontent-img-download {
 	}
 }
 
-@media (max-height: 600px) {
+@media (max-height: 600px) and (orientation: landscape) {
 	:root {
 		--navbar-height: var(--navbar-height-mobile);
 	}
