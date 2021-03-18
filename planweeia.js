@@ -1,4 +1,7 @@
-/* ver. 1.4.2 15.03.2021 */
+/**
+ * Copyright © 2021 Lewy. All rights reserved.
+ * ver. 1.5.0 18.03.2021 
+ */
 
 const timetableName = "plan-1et-aim.png";
 const timetableDiffName = "diff-plan-1et-aim.png";
@@ -70,10 +73,8 @@ function outsideMenuClick() {
 }
 
 //Change tab3 name and content when width is changing
-window.matchMedia("(max-width: 900px)").addEventListener("change", tab3Change);
-function tab3Change(e) {
+window.matchMedia("(max-width: 900px)").addEventListener("change", e => {
     var id = sessionStorage.getItem("tabId");
- 
     if (e.matches) {
         document.querySelector(".tab3").innerHTML = "Stary Plan";
         document.querySelector(".tab3").id = "tab3-old";
@@ -84,17 +85,45 @@ function tab3Change(e) {
         document.querySelector(".tab3").id = "tab3-beer";
         if (id == "tab3-old") menuClick("tab3-beer");
     }
+});
+
+//Set css --vh variable (bugfix for vh in mobile browser. Set vh as window height without url bar)
+window.addEventListener('resize', getViewHeight);
+window.addEventListener('orientationchange', getViewHeight);
+getViewHeight();
+
+function getViewHeight() {
+    document.documentElement.style.setProperty('--vh', (window.innerHeight/100) + 'px');
 }
 
-//Auto reload page using Page Visibility API
-document.addEventListener("visibilitychange", handleVisibilityChange, false);
-function handleVisibilityChange() {
-    if (Date.now() - sessionStorage.getItem("timestamp") < autoReloadTimeout*60*1000) return;   //reload only if timeout less than ...
-    if (document.visibilityState == "visible") location.reload();
+//Page visibility change (Page Visibility API)
+document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState == "visible") {
+        autoReload();
+        logoFlip();
+    }
+    else {
+        clearTimeout(logoFlipTimeoutID);
+    }
+});
+
+//Page auto reload
+function autoReload() {
+    if (Date.now() - sessionStorage.getItem("timestamp") > autoReloadTimeout*60*1000)
+        location.reload();
 }
 
+//Logo flip animation
+var logoFlipTimeoutID;
+function logoFlip() {
+    document.querySelector(".logo-icon").classList.toggle("logo-icon-flip");
+    var timeout = (Math.floor(Math.random()*(90-30+1))+30)*1000;    //(max-min+1)+min in s
+    logoFlipTimeoutID = setTimeout(logoFlip, timeout);
+}
+
+//On load
 window.addEventListener('load', () => {
-    //restore opened tab from last session (before refresh)
+    //Restore opened tab from last session (before refresh)
     var id = sessionStorage.getItem("tabId");
     if (id && id != "tab1") {
         menuClick(id);
@@ -105,16 +134,10 @@ window.addEventListener('load', () => {
     }
     //Save timestamp
     sessionStorage.setItem("timestamp", Date.now());
+
+    //Logo flip animation
+    logoFlip();
 });
-
-//Set css --vh variable (bugfix for vh in mobile browser. Set vh as window height without url bar)
-window.addEventListener('resize', viewHeight);
-window.addEventListener('orientationchange', viewHeight);
-viewHeight();
-
-function viewHeight() {
-    document.documentElement.style.setProperty('--vh', (window.innerHeight/100) + 'px');
-}
 
 //Service worker
 if('serviceWorker' in navigator) {

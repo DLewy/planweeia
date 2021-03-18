@@ -1,4 +1,7 @@
-/* ver. 1.4.3 16.03.2021 */
+/**
+ * Copyright © 2021 Lewy. All rights reserved
+ * ver. 1.5.0 18.03.2021 
+ */
 
 *{
 	margin: 0;
@@ -37,24 +40,29 @@ header .title {
 	font-weight: 700;
   	color: white;
 }
-header #logo {
+header .logo {
 	float: left;
 	height: inherit;
 	overflow: hidden;
 	cursor: pointer;
+	perspective: 1000px;
 }
-header #logo img {
+header .logo-icon {
 	height: var(--navbar-height);
 	padding-top: 6px;
 	padding-bottom: 6px;
 	margin-left: 30px;
 	margin-right: 30px;
-	transition: transform .5s ease;
+	transition: transform 1.3s;
 }
-header #logo:hover img {
-  	transform: scale(1.11);
+header .logo-icon-flip {
+	transform: rotateY(360deg);
 }
-header #logo a {
+header .logo:hover .logo-icon {
+	transition: transform 0.5s ease;
+	transform: scale(1.11);
+}
+header .logo a {
 	-webkit-tap-highlight-color: transparent; /* non-standard CSS!! */
 }
 header .menu {

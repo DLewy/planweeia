@@ -15,7 +15,7 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
 ?>
 
 <!-- Copyright © 2021 Lewy. All rights reserved -->
-<!-- ver. 1.4.3 16.03.2021 -->
+<!-- ver. 1.5.0 18.03.2021 -->
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -27,17 +27,17 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         <meta name="apple-mobile-web-app-capable" content="yes">
         <title>Plan WEEIA</title>
         <link rel="icon" href="weeia_logo.png">
-        <link rel="stylesheet" href="planweeia.css?v=1.4.3">
+        <link rel="stylesheet" href="planweeia.css?v=1.5.0">
         <link rel="stylesheet" href="BeerSlider.css?v=1.0.1">
         <link rel="manifest" href="manifest.webmanifest?v=1.0.1">
         <link rel="apple-touch-icon" href="appicon-maskable-192.png">
-        <script src="planweeia.js?v=1.4.2" defer></script>
+        <script src="planweeia.js?v=1.5.0" defer></script>
         <script src="BeerSlider.js?v=1.0.0" defer></script>
     </head>
 
     <body>
         <header>
-            <div id="logo"><a href="http://www.weeia.p.lodz.pl/"><img src="weeia_logo.png" alt="logo"></a></div>
+            <div class="logo"><a href="http://www.weeia.p.lodz.pl/"><img class="logo-icon" src="weeia_logo.png" alt="logo"></a></div>
             <p class="title">Plan ET AiM</p>
             <input class="menu-btn" id="menu-btn" type="checkbox"/>
             <label class="menu-icon" for="menu-btn"><div class="nav-icon-container"><div class="nav-icon"></div></div></label>
