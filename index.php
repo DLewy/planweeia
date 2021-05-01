@@ -15,7 +15,7 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
 ?>
 
 <!-- Copyright © 2021 Lewy. All rights reserved -->
-<!-- ver. 1.5.0 18.03.2021 -->
+<!-- ver. 1.5.1 30.03.2021 -->
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -60,7 +60,7 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         </header>
 
         <div class="tabcontent" id="Timetable">
-            <img id="timetable-img" src="plan-1et-aim.png?t=<?php echo filemtime("plan-1et-aim.png"); ?>" alt="Plan">
+            <img id="timetable-img" src="plan-img.php?t=<?php echo filemtime("plan-1et-aim.png"); ?>" alt="Plan">
         </div>
         <div class="tabcontent" id="Diff">
             <img id="timetable-img" src="diff-plan-1et-aim.png?t=<?php echo filemtime("diff-plan-1et-aim.png"); ?>" alt="Plan Diff">

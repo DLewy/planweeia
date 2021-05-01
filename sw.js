@@ -1,9 +1,10 @@
-/* ver. 1.0.1 18.03.2021 */
+/* ver. 1.0.2 30.03.2021 */
 
-const cacheName = 'planweeia-cache-v1.1';
+const cacheName = 'planweeia-cache-v1.2';
 const resourcesToPrecache = [
   '/',
   '/index.php',
+  '/plan-img.php',
   '/planweeia.js?v=1.5.0',
   '/planweeia.css?v=1.5.0',
   '/BeerSlider.js?v=1.0.0',
