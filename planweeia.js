@@ -1,11 +1,11 @@
 /**
  * Copyright © 2021 Lewy. All rights reserved.
- * ver. 1.5.0 18.03.2021 
+ * ver. 1.5.1 13.09.2021 
  */
 
-const timetableName = "plan-1et-aim.png";
-const timetableDiffName = "diff-plan-1et-aim.png";
-const timetableOldName = "plan-1et-aim_old.png";
+const timetableName = "plan-et-aim.png";
+const timetableDiffName = "diff-plan-et-aim.png";
+const timetableOldName = "plan-et-aim_old.png";
 const termsName = "terminy.png";
 const autoReloadTimeout = 60;    //minutes
 

@@ -1,17 +1,17 @@
-/* ver. 1.0.2 30.03.2021 */
+/* ver. 1.0.3 13.09.2021 */
 
-const cacheName = 'planweeia-cache-v1.2';
+const cacheName = 'planweeia-cache-v1.3';
 const resourcesToPrecache = [
   '/',
   '/index.php',
   '/plan-img.php',
-  '/planweeia.js?v=1.5.0',
+  '/planweeia.js?v=1.5.1',
   '/planweeia.css?v=1.5.0',
   '/BeerSlider.js?v=1.0.0',
   '/BeerSlider.css?v=1.0.1',
-  '/plan-1et-aim.png',
-  '/plan-1et-aim_old.png',
-  '/diff-plan-1et-aim.png',
+  '/plan-et-aim.png',
+  '/plan-et-aim_old.png',
+  '/diff-plan-et-aim.png',
   '/terminy.png',
   '/weeia_logo.png',
 ];

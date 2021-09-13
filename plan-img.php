@@ -30,10 +30,10 @@ if ($error == true) {
 		$png_image = imagecreatefrompng('error.png');
 
 } else {
-		$png_image = imagecreatefrompng('plan-1et-aim.png');
+		$png_image = imagecreatefrompng('plan-et-aim.png');
 		$black = imagecolorallocate($png_image, 0, 0, 0);
 		$bbox = imagettfbbox(50, 0, 'Lato-Regular', $text);
-		$imgdata = getimagesize('plan-1et-aim.png');
+		$imgdata = getimagesize('plan-et-aim.png');
 		imagettftext($png_image,50, 0, $imgdata[0]-($bbox[2]+30), 65, $black,'Lato-Regular',$text);
 }
 imagepng($png_image);

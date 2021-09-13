@@ -1,21 +1,11 @@
-<?php
-error_reporting(0);
-ini_set('display_errors', 0);
-
-if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
-	$xml = simplexml_load_file("http://www.geoplugin.net/xml.gp?ip=".$_SERVER['REMOTE_ADDR']);
-	$countryname = $xml->geoplugin_countryName;
-	$cityname = $xml->geoplugin_city;
-	$continentCode = $xml->geoplugin_continentCode;
-
-
-	$line = date('Y-m-d H:i:s')." - ".$_SERVER['REMOTE_ADDR']."->".$continentCode."->".$countryname."->".$cityname." - ".$_SERVER['HTTP_REFERER'];
-	file_put_contents('../../logs/weeia.log', $line . PHP_EOL, FILE_APPEND);
-}
-?>
-
 <!-- Copyright © 2021 Lewy. All rights reserved -->
-<!-- ver. 1.5.1 30.03.2021 -->
+<!-- ver. 1.5.2 13.09.2021 -->
+
+<?php
+    error_reporting(0);
+    ini_set('display_errors', 0);
+    include_once "log.php";
+?>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -31,7 +21,7 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         <link rel="stylesheet" href="BeerSlider.css?v=1.0.1">
         <link rel="manifest" href="manifest.webmanifest?v=1.0.1">
         <link rel="apple-touch-icon" href="appicon-maskable-192.png">
-        <script src="planweeia.js?v=1.5.0" defer></script>
+        <script src="planweeia.js?v=1.5.1" defer></script>
         <script src="BeerSlider.js?v=1.0.0" defer></script>
     </head>
 
@@ -60,26 +50,25 @@ if($_SERVER['REMOTE_ADDR']!="89.71.30.90") {
         </header>
 
         <div class="tabcontent" id="Timetable">
-            <img id="timetable-img" src="plan-img.php?t=<?php echo filemtime("plan-1et-aim.png"); ?>" alt="Plan">
+            <img id="timetable-img" src="plan-img.php?t=<?php echo filemtime("plan-et-aim.png"); ?>" alt="Plan">
         </div>
         <div class="tabcontent" id="Diff">
-            <img id="timetable-img" src="diff-plan-1et-aim.png?t=<?php echo filemtime("diff-plan-1et-aim.png"); ?>" alt="Plan Diff">
+            <img id="timetable-img" src="diff-plan-et-aim.png?t=<?php echo filemtime("diff-plan-et-aim.png"); ?>" alt="Plan Diff">
         </div>
         <div class="tabcontent" id="Beer">
             <div id="beer-slider" class="beer-slider" data-beer-label="">
-                <img id="timetable-img" src="plan-1et-aim_old.png?t=<?php echo filemtime("plan-1et-aim_old.png"); ?>" alt="Plan Old">
+                <img id="timetable-img" src="plan-et-aim_old.png?t=<?php echo filemtime("plan-et-aim_old.png"); ?>" alt="Plan Old">
                 <div class="beer-reveal" data-beer-label="">
-                    <img id="timetable-img" src="plan-1et-aim.png?t=<?php echo filemtime("plan-1et-aim.png"); ?>" alt="Plan">
+                    <img id="timetable-img" src="plan-et-aim.png?t=<?php echo filemtime("plan-et-aim.png"); ?>" alt="Plan">
                 </div>
             </div>
         </div>
         <div class="tabcontent" id="Old">
-            <img id="timetable-img" src="plan-1et-aim_old.png?t=<?php echo filemtime("plan-1et-aim_old.png"); ?>" alt="Plan Old">
+            <img id="timetable-img" src="plan-et-aim_old.png?t=<?php echo filemtime("plan-et-aim_old.png"); ?>" alt="Plan Old">
         </div>
         <div class="tabcontent" id="Terms">
             <img id="terms-img" src="terminy.png?t=<?php echo filemtime("terminy.png"); ?>" alt="Terminy">
         </div>
-        <a id="tabcontent-img-download" href="plan-1et-aim.png" download="plan-1et-aim.png">Pobierz</a>
-        <!-- <a id="tabcontent-img-download" href="plan-1et-aim.png" download>Pobierz</a> -->
+        <a id="tabcontent-img-download" href="plan-et-aim.png" download="plan-et-aim.png">Pobierz</a>
     </body>
 </html>
